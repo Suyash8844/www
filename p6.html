@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX Example</title>
+  <script>
+    function getData() {
+      var xhr = new XMLHttpRequest();
+      
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          document.getElementById("result").innerHTML = response.message;
+        }
+      };
+      
+      xhr.open("GET", "data.json", true);
+      xhr.send();
+    }
+  </script>
+</head>
+<body>
+  <h1>AJAX Example</h1>
+  
+  <button onclick="getData()">Get Data</button>
+  
+  <div id="result"></div>
+</body>
+</html>
